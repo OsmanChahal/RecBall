@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "146771235411",
+    "project_id": "rec-ball-13257",
+    "storage_bucket": "rec-ball-13257.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146771235411:android:b394e3b4a34ad4ecd92ca6",
+        "android_client_info": {
+          "package_name": "com.example.rec_ball"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDihAcN5d2iOH3pca0X3U7FlKBdEY1Dq6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
