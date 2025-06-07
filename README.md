@@ -16,7 +16,7 @@
 * **Framework:** [Flutter](https://flutter.dev/)
 * **Language:** [Dart](https://dart.dev/)
 * **API Integration:** (http requests)
-* **External APIs:** (Mention the specific football data API(s) you are consuming, e.g., Football-Data.org, API-Football, etc.)
+* **External APIs:** (Football-Data.org, Newsapi.org)
 
 
 ## 📄 License
