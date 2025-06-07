@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rec_ball/objects/match.dart';
 import 'package:rec_ball/screens/match_screen.dart';
-// import 'package:rec_ball/screens/match_screen.dart';
+
 
 class GameCard extends StatefulWidget {
   final Match match;

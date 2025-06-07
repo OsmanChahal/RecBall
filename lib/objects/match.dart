@@ -7,8 +7,12 @@ class Match {
   final String awayTeamLogo;
   final String awayTeamName;
   final String competitionName;
+  final String? compatitionLogo;
   final int? matchDay;
   final String utcDate;
+  final String status;
+  final int? fullTimeHomeScore;
+  final int? fullTimeAwayScore;
 
   Match({
     required this.awayTeamLogo,
@@ -16,9 +20,13 @@ class Match {
     required this.competitionName,
     required this.homeTeamLogo,
     required this.homeTeamName,
+    required this.compatitionLogo,
     required this.id,
     required this.matchDay,
     required this.utcDate,
+    required this.fullTimeAwayScore,
+    required this.fullTimeHomeScore,
+    required this.status,
   });
 
   String get formattedMatchTime {
@@ -40,7 +48,18 @@ class Match {
     final homeTeam = json['homeTeam'] as Map<String, dynamic>?;
     final awayTeam = json['awayTeam'] as Map<String, dynamic>?;
     final competition = json['competition'] as Map<String, dynamic>?;
-
+    final score = json['score'] as Map<String, dynamic>?;
+    final status = json['status'] as String;
+    final int? parsedHomeScore;
+    final int? parsedAwayScore;
+    if (status == 'FINISHED') {
+      final fullTimeScore = score?['fullTime'] as Map<String, dynamic>;
+      parsedAwayScore = fullTimeScore['away'] as int?;
+      parsedHomeScore = fullTimeScore['home'] as int?;
+    } else {
+      parsedAwayScore = null;
+      parsedHomeScore = null;
+    }
     return Match(
       id: json['id'] as int,
       homeTeamName: homeTeam?['name'] as String,
@@ -48,8 +67,12 @@ class Match {
       awayTeamName: awayTeam?['name'] as String,
       awayTeamLogo: awayTeam?['crest'] as String,
       competitionName: competition?['name'] as String,
+      compatitionLogo: competition?['emblem'] as String,
       matchDay: json['matchday'] as int?,
       utcDate: json['utcDate'] as String,
+      fullTimeAwayScore: parsedAwayScore,
+      fullTimeHomeScore: parsedHomeScore,
+      status: status,
     );
   }
 
@@ -61,8 +84,12 @@ class Match {
       'awayTeamName': awayTeamName,
       'awayTeamLogo': awayTeamLogo,
       'competitionName': competitionName,
+      'competitionLogo': compatitionLogo,
       'matchDay': matchDay,
       'utcDate': utcDate,
+      'status': status,
+      "fullTimeHomeScore": fullTimeHomeScore,
+      "fullTimeAwayScore": fullTimeAwayScore,
     };
   }
 }

@@ -102,27 +102,27 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
             ),
           ),
           SizedBox(height: 30),
-          Expanded(
-            child: ListView.builder(
-              itemCount: news.length,
-              itemBuilder: (context, index) {
-                final atricle = news[index];
-                return NewsCard(
-                  imageURL: atricle['urlToImage'],
-                  title: atricle['title'],
-                  description: atricle['description'],
-                  author: atricle['author'] ?? "Unkown Author",
-                  source: atricle['source']?['name'] ?? 'Unkown Source',
-                  date:
-                      atricle['publishedAt'] != null
-                          ? DateTime.parse(
-                            atricle['publishedAt'],
-                          ).toLocal().toString().split(" ")[0]
-                          : "No Date",
-                );
-              },
-            ),
-          ),
+          // Expanded(
+          //   child: ListView.builder(
+          //     itemCount: news.length,
+          //     itemBuilder: (context, index) {
+          //       final atricle = news[index];
+          //       return NewsCard(
+          //         imageURL: atricle['urlToImage'],
+          //         title: atricle['title'],
+          //         description: atricle['description'],
+          //         author: atricle['author'] ?? "Unkown Author",
+          //         source: atricle['source']?['name'] ?? 'Unkown Source',
+          //         date:
+          //             atricle['publishedAt'] != null
+          //                 ? DateTime.parse(
+          //                   atricle['publishedAt'],
+          //                 ).toLocal().toString().split(" ")[0]
+          //                 : "No Date",
+          //       );
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );

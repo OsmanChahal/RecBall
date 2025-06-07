@@ -13,9 +13,7 @@ class _MatchScreenState extends State<MatchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text("Match", style: TextStyle(fontSize: 30))),
-      ),
+      appBar: AppBar(),
       body: Column(
         children: [
           Padding(
@@ -29,21 +27,41 @@ class _MatchScreenState extends State<MatchScreen> {
                   child: Image.network(widget.match.homeTeamLogo),
                 ),
                 Text(
-                  "4 - 1",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  widget.match.status == "FINISHED"
+                      ? '${widget.match.fullTimeHomeScore} - ${widget.match.fullTimeAwayScore}'
+                      : widget.match.utcDate,
+                  style:
+                      widget.match.status != "FINISHED"
+                          ? TextStyle(fontSize: 16, fontWeight: FontWeight.bold)
+                          : TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "InriaSerif",
+                          ),
                 ),
                 SizedBox(
                   width: 80,
                   height: 80,
-                  child: Image.network(
-                    "https://crests.football-data.org/328.png",
-                  ),
+                  child: Image.network(widget.match.awayTeamLogo),
                 ),
               ],
             ),
           ),
           SizedBox(height: 8),
-          Image.network("https://crests.football-data.org/ELC.png", height: 60),
+          SizedBox(
+            height: 60,
+            child:
+                (widget.match.compatitionLogo != null &&
+                        widget.match.compatitionLogo!.isNotEmpty)
+                    ? Image.network(
+                      widget.match.compatitionLogo!,
+                      fit: BoxFit.contain,
+                      errorBuilder:
+                          (context, error, stackTrace) =>
+                              const Icon(Icons.sports_soccer, size: 60),
+                    )
+                    : Icon(Icons.sports_soccer, size: 60),
+          ),
           SizedBox(height: 16),
           Expanded(
             child: Container(

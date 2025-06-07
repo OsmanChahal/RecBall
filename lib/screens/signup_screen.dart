@@ -1,15 +1,48 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rec_ball/widgets/text_field_helper.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController surnameController = TextEditingController();
+  final TextEditingController jerseyNameController = TextEditingController();
+  final TextEditingController bithdayController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    firstNameController.dispose();
+    surnameController.dispose();
+    jerseyNameController.dispose();
+    bithdayController.dispose();
+    super.dispose();
+  }
+
+  Future<void> createUserWithEmailAndPassword() async {
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+      print(userCredential);
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +56,18 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Text(
               "Welcom To RecBall",
               style: TextStyle(
-                fontFamily: "InriaSerif",
                 fontSize: 32,
+                fontFamily: "InriaSerif",
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Center(
-              child: Text(
-                "We are excited to join us",
-                style: TextStyle(
-                  fontFamily: "InriaSerif",
-                  fontSize: 18,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
+          SizedBox(height: 10),
+          Center(
+            child: Text(
+              "We are excited to join us",
+              style: TextStyle(fontSize: 18, fontFamily: "InriaSerif"),
             ),
           ),
           SizedBox(height: 60),
