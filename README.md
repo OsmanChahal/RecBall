@@ -28,4 +28,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * **LinkedIn:** www.linkedin.com/in/osman-chahal-80a758264
 * **Email:** shahalosman@gmail.com
 
-Project Link: (https://github.com/OsmanShahal/rec_ball)
+Project Link: [https://github.com/OsmanChahal/RecBall](https://github.com/OsmanChahal/RecBall)
